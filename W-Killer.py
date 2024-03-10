@@ -77,7 +77,7 @@ def quitGracefully(clear=True):
         cmd = ['sudo', 'service','NetworkManager','restart']
         proc_restore = Popen(cmd, stdout=DN, stderr=DN)
         proc_restore.communicate()
-        while proc_restore.wait == 1:
+        while proc_restore.wait == 1:  # problem
             continue
         proc_restore.kill()
     except:
@@ -125,7 +125,7 @@ def selectInterface():
                     cmd = ['sudo', 'airmon-ng','start',interface]
                     proc_dump = Popen(cmd, stdout=DN, stderr=DN)
                     proc_dump.communicate()
-                    while proc_dump.wait == 1:
+                    while proc_dump.wait == 1: # problem
                         continue
                     proc_dump.kill()
                     for i in os.listdir("/sys/class/net/"):
@@ -193,7 +193,7 @@ def scanAP(monitor_interface):
                     if len(row) < 2:
                         continue
                     if not hit_clients:
-                        if row[0].strip() == 'Station MAC':
+                        if row[0].strip() == 'Station MAC': # I'm here.
                             hit_clients = True
                             continue
                         if len(row) < 14:
